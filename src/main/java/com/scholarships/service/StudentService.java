@@ -26,9 +26,6 @@ public class StudentService {
         {
             student = new Student(studentRO);
         }
-
-        // TODO: Pending to update student entity with RO info
-
         student.setDiscount(rand.nextInt(101));
 
         repository.save(student);
@@ -52,5 +49,12 @@ public class StudentService {
         }
 
         return studentId + "," + student.getDiscount();
+    }
+    public Student updateStudent(Student student){
+        // TODO: Pending to update student entity with RO info
+        //System.out.println(student);
+        student.setStudentId(student.getId());
+        student.setDiscount(rand.nextInt(101));
+        return repository.save(student);
     }
 }

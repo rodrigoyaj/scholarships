@@ -1,5 +1,6 @@
 package com.scholarships.resource;
 
+import com.scholarships.model.Student;
 import com.scholarships.repository.StudentRepository;
 import com.scholarships.representation.DiscountRO;
 import com.scholarships.representation.StudentRO;
@@ -45,5 +46,10 @@ public class StudentResource{
     @GetMapping(value = "{studentId}/discountwithcsvformat", produces = "text/customcsv")
     public String getStudentDiscountWithCSVFormat(@PathVariable long studentId) throws Exception {
         return service.getStudentDiscountWithCSVFormat(studentId);
+    }
+    @PutMapping("/update")
+    public ResponseEntity<Student> updateStudent(@RequestBody Student studentRO){
+        service.updateStudent(studentRO);
+        return new ResponseEntity<Student>(studentRO,HttpStatus.OK);
     }
 }
